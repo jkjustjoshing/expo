@@ -1,8 +1,8 @@
-import Constants, { ExecutionEnvironment } from 'expo-constants';
 import * as React from 'react';
 import { Platform } from 'react-native';
 
 import DevLoadingView from '../environment/DevLoadingView';
+import ExpoGoModule from '../environment/ExpoGoModule';
 
 /**
  * Append the Expo Fast Refresh view and optionally
@@ -27,7 +27,7 @@ export function withDevTools<TComponent extends React.ComponentType<any>>(
 
   const shouldUseExpoFastRefreshView = Platform.select({
     web: true,
-    ios: Constants.executionEnvironment !== ExecutionEnvironment.Bare,
+    ios: ExpoGoModule != null,
     default: false,
   });
 
